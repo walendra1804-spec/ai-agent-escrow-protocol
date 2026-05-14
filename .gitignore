@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Hardhat generated files
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain/
+typechain-types/
+
+# Local deployment/output variants
+deployments/*.local.json
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+*.pyc
+__pycache__/
+
+# Native/local build output
+*.exe
+*.dll
+*.so
+*.dylib
+dist/
+build/
+tmp/
+temp/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

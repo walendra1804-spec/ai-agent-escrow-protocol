@@ -1,0 +1,26 @@
+{
+  "name": "ai-agent-escrow-gateway",
+  "version": "1.0.0",
+  "description": "Local simulation for an AI-agent escrow smart contract gateway.",
+  "private": true,
+  "scripts": {
+    "hh": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js",
+    "compile": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js compile",
+    "test": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js test",
+    "simulate:happy": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/simulateHappyPath.js",
+    "simulate:dispute": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/simulateDisputeBurn.js",
+    "simulate:timeout": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/simulateTimeout.js",
+    "simulate:all": "npm run simulate:happy && npm run simulate:dispute && npm run simulate:timeout",
+    "live:happy:base-sepolia": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/liveHappyPathBaseSepolia.js --network baseSepolia",
+    "live:withdraw:base-sepolia": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/liveWithdrawBaseSepolia.js --network baseSepolia",
+    "wallet:new": "npx -y node@22 scripts/createTestnetWallet.js",
+    "deploy:base-sepolia": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/deployBaseSepolia.js --network baseSepolia"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@openzeppelin/contracts": "^5.6.1",
+    "dotenv": "^17.2.3",
+    "ethers": "^6.16.0",
+    "hardhat": "^2.28.6"
+  }
+}

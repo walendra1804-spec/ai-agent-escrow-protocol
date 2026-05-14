@@ -1,0 +1,15 @@
+{
+  "contractName": "AIAgentEscrow",
+  "network": "baseSepolia",
+  "chainId": 84532,
+  "contractAddress": "0xc2a7524864d1998454EB6CF09242B9D33257F6Bf",
+  "deployer": "0x9e25e02Cc41c07d7136B50550ea80C48b01E33e2",
+  "owner": "0x9e25e02Cc41c07d7136B50550ea80C48b01E33e2",
+  "feeWallet": "0x9f87Eae58dDB89281FDF794CD3Bd13D3e2457a99",
+  "deadWallet": "0x000000000000000000000000000000000000dEaD",
+  "feeBps": 50,
+  "deploymentTxHash": "0x8e7bc485fea4e3e390983985bd32e5f8af0f0cf0cdfa958cc2693906829f76ce",
+  "blockNumber": 41480592,
+  "explorer": "https://sepolia.basescan.org/address/0xc2a7524864d1998454EB6CF09242B9D33257F6Bf",
+  "deployedAt": "2026-05-14T03:31:11.625Z"
+}
