@@ -58,7 +58,7 @@ static std::string run_command(const std::string& command) {
 
 int main() {
     try {
-        const std::string rpc_url = env_default("AI_ESCROW_RPC_URL", "https://sepolia.base.org");
+        const std::string rpc_url = env_default("AI_ESCROW_RPC_URL", "https://mainnet.base.org");
         const std::string contract = env_required("AI_ESCROW_CONTRACT_ADDRESS");
         const std::string private_key = env_required("AI_BUYER_PRIVATE_KEY");
         const std::string seller = env_required("AI_SELLER_ADDRESS");

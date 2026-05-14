@@ -14,7 +14,8 @@
     "live:happy:base-sepolia": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/liveHappyPathBaseSepolia.js --network baseSepolia",
     "live:withdraw:base-sepolia": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/liveWithdrawBaseSepolia.js --network baseSepolia",
     "wallet:new": "npx -y node@22 scripts/createTestnetWallet.js",
-    "deploy:base-sepolia": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/deployBaseSepolia.js --network baseSepolia"
+    "deploy:base-sepolia": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/deployBaseSepolia.js --network baseSepolia",
+    "deploy:base-mainnet": "npx -y node@22 node_modules/hardhat/internal/cli/cli.js run scripts/deployBaseMainnet.js --network baseMainnet"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",

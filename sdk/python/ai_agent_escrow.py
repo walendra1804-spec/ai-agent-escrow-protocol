@@ -112,7 +112,7 @@ class AIAgentEscrowClient:
         rpc_url: str,
         contract_address: str,
         private_key: str,
-        chain_id: int = 84532,
+        chain_id: int = 8453,
     ) -> None:
         self.w3 = Web3(Web3.HTTPProvider(rpc_url))
         self.w3.middleware_onion.inject(ExtraDataToPOAMiddleware, layer=0)
@@ -129,10 +129,10 @@ class AIAgentEscrowClient:
     @classmethod
     def from_env(cls) -> "AIAgentEscrowClient":
         return cls(
-            rpc_url=_env("AI_ESCROW_RPC_URL", "https://sepolia.base.org"),
+            rpc_url=_env("AI_ESCROW_RPC_URL", "https://mainnet.base.org"),
             contract_address=_env("AI_ESCROW_CONTRACT_ADDRESS"),
             private_key=_env("AI_BUYER_PRIVATE_KEY"),
-            chain_id=int(_env("AI_ESCROW_CHAIN_ID", "84532")),
+            chain_id=int(_env("AI_ESCROW_CHAIN_ID", "8453")),
         )
 
     def create_order_and_lock_funds(

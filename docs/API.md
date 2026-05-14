@@ -2,12 +2,12 @@
 
 ## Network Choice
 
-Target testnet: Base Sepolia. Alasannya: EVM-compatible, RPC publik sederhana, faucet lebih mudah diakses, biaya rendah, dan tooling developer matang untuk Hardhat, ethers, indexer, dan agent backend.
+Target production network: Base Mainnet. Alasannya: EVM-compatible, biaya rendah, likuiditas ekosistem kuat, dan tooling developer matang untuk Hardhat, ethers, indexer, dan agent backend.
 
 Local simulation di repo ini memakai Hardhat Network. Asset yang dikunci adalah native coin EVM:
 
 - Hardhat lokal: ETH simulasi
-- Base Sepolia: ETH testnet native
+- Base Mainnet: ETH native
 
 ## Architecture
 

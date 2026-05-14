@@ -2,17 +2,22 @@
 
 ## Network
 
-Testnet yang dipakai: Base Sepolia.
+Production network: Base Mainnet.
 
-- Chain ID: `84532`
-- RPC: `https://sepolia.base.org`
+- Chain ID: `8453`
+- RPC: `https://mainnet.base.org`
 - Gas token: `ETH`
-- Explorer: `https://sepolia.basescan.org`
+- Explorer: `https://basescan.org`
 - Contract address: `0xc2a7524864d1998454EB6CF09242B9D33257F6Bf`
+- Verified code: `https://basescan.org/address/0xc2a7524864d1998454EB6CF09242B9D33257F6Bf#code`
 
-Status saat ini: deployed ke Base Sepolia. Explorer: https://sepolia.basescan.org/address/0xc2a7524864d1998454EB6CF09242B9D33257F6Bf
+Deployment metadata:
 
-Setelah deploy, alamat kontrak otomatis ditulis ke:
+```text
+deployments/base-mainnet.json
+```
+
+Base Sepolia is available only as a test environment:
 
 ```text
 deployments/base-sepolia.json
@@ -21,7 +26,7 @@ deployments/base-sepolia.json
 ## Cara Kerja
 
 1. Buyer AI bikin order.
-2. Buyer AI lock ETH testnet ke smart contract.
+2. Buyer AI lock ETH ke smart contract.
 3. Kalau barang/jasa benar, Buyer AI panggil `release`.
 4. Seller mendapat saldo pending 99.5%.
 5. Fee wallet pemilik protokol mendapat saldo pending 0.5%.
@@ -35,8 +40,6 @@ Tidak ada keeper khusus dan tidak ada minimal durasi. Kalau user set escrow 1 de
 
 ## Payload Create Escrow
 
-Ini format data yang AI perlu siapkan sebelum call contract:
-
 ```json
 {
   "seller": "0xSellerWallet",
@@ -47,7 +50,7 @@ Ini format data yang AI perlu siapkan sebelum call contract:
 }
 ```
 
-Call smart contract:
+Call:
 
 ```solidity
 createEscrow(address seller, uint64 durationSeconds, bytes32 agreementHash)
@@ -120,9 +123,9 @@ Call:
 withdraw()
 ```
 
-Caller menarik `pendingWithdrawals[caller]`.
+Caller menarik `pendingWithdrawals[caller]`. Fee developer bersifat kumulatif; developer tidak perlu withdraw satu-satu per transaksi.
 
-## Deploy ke Base Sepolia
+## Deploy ke Base Mainnet
 
 1. Buat file `.env` dari `.env.example`.
 2. Isi:
@@ -130,15 +133,16 @@ Caller menarik `pendingWithdrawals[caller]`.
 ```text
 DEPLOYER_PRIVATE_KEY=0x...
 FEE_WALLET=0x...
-BASE_SEPOLIA_RPC_URL=https://sepolia.base.org
+BASE_MAINNET_RPC_URL=https://mainnet.base.org
+ETHERSCAN_API_KEY=...
 ```
 
-3. Isi deployer dengan test ETH dari faucet Base Sepolia.
+3. Pastikan deployer punya ETH di Base Mainnet.
 4. Jalankan:
 
 ```powershell
 cd C:\Users\ASUS\ai-agent-escrow-gateway
-npm run deploy:base-sepolia
+npm run deploy:base-mainnet
 ```
 
 ## Python Copy-Paste SDK
@@ -154,9 +158,12 @@ Run:
 ```powershell
 cd C:\Users\ASUS\ai-agent-escrow-gateway\sdk\python
 python -m pip install -r requirements.txt
-$env:AI_ESCROW_CONTRACT_ADDRESS="0xcontract_after_deploy"
-$env:AI_BUYER_PRIVATE_KEY="0xbuyer_agent_testnet_private_key"
+$env:AI_ESCROW_RPC_URL="https://mainnet.base.org"
+$env:AI_ESCROW_CONTRACT_ADDRESS="0xc2a7524864d1998454EB6CF09242B9D33257F6Bf"
+$env:AI_ESCROW_CHAIN_ID="8453"
+$env:AI_BUYER_PRIVATE_KEY="0xbuyer_agent_private_key"
 $env:AI_SELLER_ADDRESS="0xseller_agent_wallet"
+$env:AI_ESCROW_AMOUNT_ETH="0.000001"
 python .\ai_agent_escrow.py
 ```
 
@@ -173,9 +180,10 @@ Run:
 ```powershell
 cd C:\Users\ASUS\ai-agent-escrow-gateway\sdk\cpp
 g++ -std=c++17 .\ai_agent_escrow.cpp -o ai_agent_escrow.exe
-$env:AI_ESCROW_CONTRACT_ADDRESS="0xcontract_after_deploy"
-$env:AI_BUYER_PRIVATE_KEY="0xbuyer_agent_testnet_private_key"
+$env:AI_ESCROW_RPC_URL="https://mainnet.base.org"
+$env:AI_ESCROW_CONTRACT_ADDRESS="0xc2a7524864d1998454EB6CF09242B9D33257F6Bf"
+$env:AI_BUYER_PRIVATE_KEY="0xbuyer_agent_private_key"
 $env:AI_SELLER_ADDRESS="0xseller_agent_wallet"
-$env:AI_ESCROW_AMOUNT_WEI="10000000000000000"
+$env:AI_ESCROW_AMOUNT_WEI="1000000000000"
 .\ai_agent_escrow.exe
 ```
